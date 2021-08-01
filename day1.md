@@ -1,5 +1,9 @@
 
-Install kubeadm, kubectl and kubelet:
+***Goggle Drive***
+https://drive.google.com/drive/folders/18PQGd4C0JG2vJmIpJ3g9BiAVe_pilfZk
+
+
+**Install kubeadm, kubectl and kubelet:**
 
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 Update the apt package index and install packages needed to use the Kubernetes apt repository:
@@ -13,29 +17,29 @@ Update apt package index, install kubelet, kubeadm and kubectl, and pin their ve
 sudo apt-get update
 sudo apt-get install -y kubelet kubeadm kube
 
-Initialize the cluster
-kubeadm init
+**Initialize the cluster**
+  kubeadm init
 
   mkdir -p $HOME/.kube
   sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
   
-**if not getting ready master node then install kubernetes network. Install calico
-Install Networking
-kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+  ---if not getting ready master node then install kubernetes network. Install calico
+  Install Networking
+  kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 
-OR
+  OR
 
-curl https://docs.projectcalico.org/manifests/calico.yaml -O
-kubectl apply -f calico.yaml
+  curl https://docs.projectcalico.org/manifests/calico.yaml -O
+  kubectl apply -f calico.yaml
 
-Verify that cluster is up:
+**Verify that cluster is up:**
 
-kubectl get nodes
+  kubectl get nodes
 
-You should see one master node in “ready” state
+  You should see one master node in “ready” state
 
-**On Worker Nodes:
+**On Worker Nodes:**
 kubeadm token create --print-join-command
 
 kubeadm join <ip address:port> --token <Some-token> --discovery-token-ca-cert-hash <SomeHash>
@@ -44,8 +48,29 @@ kubeadm join 172.31.42.230:6443 --token vjuq2l.non5vzeav5rzmzb1     --discovery-
 
 kubectl get nodes
 
-On Master
+**On Master**
 sudo kubectl get pods -A
 All components should be in “Running” state
+
+***Day 2 ***
+  *** Create a pod ***
+  kubectl run firstpod --image=nginx --port 80
+  kubectl get pods
+  kubectl get pod firstpod
+  kubectl get pods -o wide
+  kubectl delete pod firstpod
+  kubectl get pods -o wide
+
+  kubectl run myfirstpod --image=httpd --port 80
+  kubectl get pods
+  kubectl get pod firstpod
+  kubectl get pods -o wide
+  kubectl delete pod firstpod
+  kubectl get pods -o wide
+
+
+**Display pod information**
+kubectl describe pod <podname>
+
 
 
