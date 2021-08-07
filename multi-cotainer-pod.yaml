@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: multi-container
+spec:
+  terminationGracePeriodSeconds: 0
+  containers:
+  - name: nginx
+    image: nginx:1.10-alpine
+    ports:
+    - containerPort: 80
+  - name: alpine
+    image: alpine:3.5
+    command: ["watch", "wget", "-qO-", "localhost"]
+
+    #kubectl create -f /home/labsuser/kubernetes-data/samplepod.yaml 
