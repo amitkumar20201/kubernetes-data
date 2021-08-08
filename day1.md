@@ -73,4 +73,30 @@ All components should be in “Running” state
 kubectl describe pod <podname>
 
 
+**History**
+kubectl rollout history deployments mydep
+
+**Undo last deployment**
+kubectl rollout undo deployments mydep
+
+**scaled up deployment**
+kubectl scale deployment mydep --replicas=9
+
+kubectl rollout pause deployment mydep
+kubectl rollout resume deployment mydep
+
+***Service***
+**Create Service**
+sudo kubectl apply -f kubernetes-data/deploymentwithrepllicas.yaml 
+sudo kubectl get pods
+
+kubectl expose deployment mydep --name mysvc --port 80
+kubectl get svc -o wide
+
+**Public port using NodePort service**
+sudo kubectl expose deployment mydep --name mysvc --port 80 --type NodePort
+
+**Load Balancer Service**
+sudo kubectl expose deployment mydep --name mysvc-lb --port 80 --type LoadBalancer
+
 

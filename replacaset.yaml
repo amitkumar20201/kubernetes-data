@@ -1,0 +1,19 @@
+#Creating ReplicaSets using a yaml file
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myreplicaset
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: prod
+  template:
+    metadata:
+      name: pods-for-rs
+      labels:
+        app: prod
+    spec:
+      containers:
+      - name: nginx
+        image: nginx

@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+        name: mypod1
+        labels:
+                env: prod
+spec:
+        containers:
+                - image: nginx
+                  name: mynginxcontainer
+                  ports:
+                   - containerPort: 80
+                  resources:
+                   limits:
+                     cpu: "1"
+                   requests:
+                     cpu: "0.5"
+                     #args: ["-cpus","2"]
+        
+# kubectl apply -f <manifestfile.yaml>
+# kubectl create -f /home/labsuser/kubernetes-data/mypod.yaml 

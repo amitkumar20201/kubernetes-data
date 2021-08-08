@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: mydep
+  name: mysvc
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app: mydep
+
+#This is using mydep deployment set to expose port 80 using deploymentwithrepllicas.yaml
+#deploymentwithrepllicas.yaml
+#below command is to create service directly and expose port 80
+#sudo kubectl expose deployment mydep --name mysvc --port 80
+#sudo kubectl expose deployment mydep --name mysvc --port 80 --dry-run -o yaml
+#

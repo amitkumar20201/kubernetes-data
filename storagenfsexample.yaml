@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: random-number-generator
+spec:
+  containers:
+   - image: alpine
+     name: alpine
+     command: ["/bin/sh","-c","shuf -i 0-100 -n 1 >> /opt/number.out && sleep 3600"]
+     volumeMounts:
+      - mountPath: /opt
+        name: mydata
+
+  volumes:
+  - name: mydata
+    #hostPath:
+    #  path: /tmp
+    #  type: Directory
+    nfs:
+      
+
+#kubectl exec random-number-generator -- cat /opt/number.out
+#kubectl delete pod randon-number-generator
+      
