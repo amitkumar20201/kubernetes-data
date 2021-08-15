@@ -1,0 +1,17 @@
+
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: my-cron
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+         containers:
+         - name: ubuntu
+           image: ubuntu
+           command: ["echo" ,"Hello"]
+         restartPolicy: Never
+
