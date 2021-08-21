@@ -99,4 +99,13 @@ sudo kubectl expose deployment mydep --name mysvc --port 80 --type NodePort
 **Load Balancer Service**
 sudo kubectl expose deployment mydep --name mysvc-lb --port 80 --type LoadBalancer
 
+**Ingress-Nginx**
+https://github.com/kubernetes/ingress-nginx/blob/main/deploy/static/provider/baremetal/deploy.yaml
+kubectl apply - f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/baremetal/deploy.yaml
+
+
+**Grafana**
+https://github.com/kubernetes/ingress-nginx/blob/main/deploy/grafana/deployment.yaml
+
+
 

@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+ name: ingress-demo
+spec:
+ rules:
+ - http:
+    paths:
+    - path: /account
+      pathType: Prefix
+      backend:
+       service:
+        name: svc1
+        port:
+          number: 88
+    - path: /cart
+      pathType: Prefix
+      backend:
+       service:
+         name: svc2
+         port:
+          number: 80 
+
+
+# kubectl create deployment dep1 --image nginx --port 80
+# kubectl expose deployment dep1 --name svc1 --target-port 80
+# kubectl create deploymnet dep2 --image httpd --port 80
+# kubectl expose deploymnet dep2 --name svc2 --target-port 80
+# kubectl apply -f ingress-rules.yaml
+# kubectl get ingress
+#
+#
